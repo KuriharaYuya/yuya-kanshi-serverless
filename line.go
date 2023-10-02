@@ -9,7 +9,7 @@ import (
 	"github.com/line/line-bot-sdk-go/v7/linebot"
 )
 
-func ReplyToUser() {
+func ReplyToUser(cnt string) {
 	err := godotenv.Load()
 	if err != nil {
 		fmt.Printf("読み込み出来ませんでした: %v", err)
@@ -25,6 +25,6 @@ func ReplyToUser() {
 
 	}
 	log.Println("Reply")
-	bot.BroadcastMessage(linebot.NewTextMessage("Hello, world...")).Do()
+	bot.BroadcastMessage(linebot.NewTextMessage(cnt)).Do()
 	return
 }

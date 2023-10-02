@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-test/dev/1696240013562-2023-10-02T09:46:53.562Z/sls-test.zip"
+          "S3Key": "serverless/sls-test/dev/1696246829826-2023-10-02T11:40:29.826Z/sls-test.zip"
         },
         "Handler": "bin/main",
         "Runtime": "go1.x",
@@ -172,8 +172,7 @@
         "Environment": {
           "Variables": {
             "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
-            "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
-            "IS_LOCAL": "true"
+            "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU="
           }
         },
         "Role": {
@@ -187,14 +186,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersion2JHdhzmeXKakhQTfvNkjsBho8mm2anUPaaUwcAYw": {
+    "HelloLambdaVersionWYVEiAmDBYWk4IdnNvWcipFwrFNyrtBNTEUU5YRvWo4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "ZRvaIoB3rXXQQQZLMWSzV4AvDeA3QAExr50ebWVDBmU="
+        "CodeSha256": "4Y0tquHO4GFPU99XmJOvkpF3uMW6dXDhnGhcRDf2Spg="
       }
     },
     "HttpApi": {
@@ -291,6 +290,27 @@
         }
       },
       "DependsOn": "HttpApiIntegrationHello"
+    },
+    "HttpApiRoutePostHello": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "RouteKey": "POST /hello",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "HttpApiIntegrationHello"
+              }
+            ]
+          ]
+        }
+      },
+      "DependsOn": "HttpApiIntegrationHello"
     }
   },
   "Outputs": {
@@ -305,7 +325,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersion2JHdhzmeXKakhQTfvNkjsBho8mm2anUPaaUwcAYw"
+        "Ref": "HelloLambdaVersionWYVEiAmDBYWk4IdnNvWcipFwrFNyrtBNTEUU5YRvWo4"
       },
       "Export": {
         "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"

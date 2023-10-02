@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"sync"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -14,37 +12,22 @@ import (
 // AWS Lambda Proxy Request functionality (default behavior)
 //
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
+type Request events.APIGatewayProxyRequest
 type Response events.APIGatewayProxyResponse
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-func Handler(ctx context.Context) (Response, error) {
-	var buf bytes.Buffer
+func Handler(ctx context.Context, req Request) (Response, error) {
 	var wg sync.WaitGroup
 	wg.Add(1)
+	// respをポインタ変数として定義
+	var resp *Response
 	go func() {
-		defer wg.Done() // 完了時にカウンターをデクリメントします
-		ReplyToUser()
+		resp = Gateway(req)
+		wg.Done()
 	}()
 
-	body, err := json.Marshal(map[string]interface{}{
-		"message": "Go Serverless v1.0! Your function executed successfully!",
-	})
-	if err != nil {
-		return Response{StatusCode: 404}, err
-	}
 	wg.Wait()
-	json.HTMLEscape(&buf, body)
-	resp := Response{
-		StatusCode:      200,
-		IsBase64Encoded: false,
-		Body:            buf.String(),
-		Headers: map[string]string{
-			"Content-Type":           "application/json",
-			"X-MyCompany-Func-Reply": "hello-handler",
-		},
-	}
-
-	return resp, nil
+	return *resp, nil
 }
 
 func main() {
