@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -23,6 +24,7 @@ func ReplyToUser() {
 		return
 
 	}
-	fmt.Println("Reply")
+	log.Println("Reply")
 	bot.BroadcastMessage(linebot.NewTextMessage("Hello, world...")).Do()
+	return
 }
