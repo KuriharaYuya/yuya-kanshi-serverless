@@ -1,4 +1,4 @@
-module main
+module github.com/KuriharaYuya/yuya-kanshi-serverless
 
 go 1.21.0
 

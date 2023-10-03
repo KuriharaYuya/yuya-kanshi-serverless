@@ -3,7 +3,8 @@ package main
 import (
 	"bytes"
 	"strings"
-	"sync"
+
+	usecase "github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
 )
 
 var buf bytes.Buffer
@@ -12,24 +13,14 @@ const userAgent = "user-agent"
 const lineBotWebhook = "LineBotWebhook"
 
 func Gateway(req Request) *Response {
-	var wg sync.WaitGroup
-
-	wg.Add(1)
-	// line-bot-request
-	// "user-agent":"LineBotWebhook/2.0"
 	ua := req.Headers[userAgent]
 
-	// LineBotWebhookが含まれているか
-
+	// line-bot-request
 	if strings.Contains(ua, lineBotWebhook) {
-		// LineBotWebhookの場合
-		go func() {
-			ReplyToUser("確認しました")
-			wg.Done()
-		}()
-		wg.Wait()
-		return nil
+		usecase.CheckDailyLog()
 	}
+
+	// LineBotWebhookが含まれているか
 
 	resp := Response{
 		StatusCode:      200,
@@ -40,6 +31,5 @@ func Gateway(req Request) *Response {
 			"X-MyCompany-Func-Reply": "hello-handler",
 		},
 	}
-	wg.Wait()
 	return &resp
 }
