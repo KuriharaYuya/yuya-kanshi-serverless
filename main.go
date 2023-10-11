@@ -1,11 +1,13 @@
 package main
 
 import (
-	"context"
-	"sync"
+	// "context"
+	// "sync"
 
+	"fmt"
+
+	notionpkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/notion"
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
 )
 
 // Response is of type APIGatewayProxyResponse since we're leveraging the
@@ -16,20 +18,23 @@ type Request events.APIGatewayProxyRequest
 type Response events.APIGatewayProxyResponse
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-func Handler(ctx context.Context, req Request) (Response, error) {
-	var wg sync.WaitGroup
-	wg.Add(1)
-	// respをポインタ変数として定義
-	var resp *Response
-	go func() {
-		resp = Gateway(req)
-		wg.Done()
-	}()
+// func Handler(ctx context.Context, req Request) (Response, error) {
+// 	var wg sync.WaitGroup
+// 	wg.Add(1)
+// 	// respをポインタ変数として定義
+// 	var resp *Response
+// 	go func() {
+// 		resp = Gateway(req)
+// 		wg.Done()
+// 	}()
 
-	wg.Wait()
-	return *resp, nil
-}
+// 	wg.Wait()
+// 	return *resp, nil
+// }
 
 func main() {
-	lambda.Start(Handler)
+  res, err :=	notionpkg.GetLogProperty()
+	fmt.Println(res)
+	fmt.Println(err)
+	// lambda.Start(Handler)
 }
