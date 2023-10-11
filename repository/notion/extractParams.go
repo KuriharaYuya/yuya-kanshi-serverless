@@ -4,6 +4,8 @@ package notionpkg
 
 import (
 	"fmt"
+
+	"github.com/jomei/notionapi"
 )
 
 type LogProperty struct {
@@ -51,24 +53,80 @@ func GetLogProperty() (LogProperty, error)  {
 	if len(pageURL.ID) > 0 {
 		logProp.Uuid = pageURL.ID.String()
 	}
-	// if len(pageURL.Properties) > 0 {
-	// 	logProp.FilledAtr = pageURL.Properties["FilledAtr"].GetType()
+
+	// filledAttrebuteProperty, exists := pageURL.Properties["filledAtr"]
+	// if(exists){
+	// 	logProp.FilledAtr = string(filledAttrebuteProperty.GetType())
+	// }else{
+	// 	fmt.Println("filledAttrebuteProperty is not exists")
 	// }
-		morningImageProperty, exists := pageURL.Properties["MorningImage"]
-		if exists {
-			logProp.MorningImage = string(morningImageProperty.GetType())
-		}
-		// logProp.MorningImage = pageURL.Properties["MorningImage"]
-		// logProp.MyFitnessPal = string(pageURL.Properties["MyFitnessPal"].GetType())
-		// logProp.TodayCalorie = string(pageURL.Properties["TodayCalorie"].GetType())
-		// logProp.ScreenTime = string(pageURL.Properties["ScreenTime"].GetType())
-		// logProp.TodayScreenTime = string(pageURL.Properties["TodayScreenTime"].GetType())
-		// logProp.MorningActivityTime = string(pageURL.Properties["MorningActivityTime"].GetType())
-		// logProp.Published = string(pageURL.Properties["Published"].GetType())
-		// logProp.TweetUrl = string(pageURL.Properties["TweetUrl"].GetType())
-		// logProp.IsDiaryDone = string(pageURL.Properties["IsDiaryDone"].GetType())
-		// logProp.IsChatLogDone = string(pageURL.Properties["IsChatLogDone"].GetType())
-		// logProp.TodayHostsImage = string(pageURL.Properties["TodayHostsImage"].GetType())
+	morningImageProperty, exists := pageURL.Properties["morningImage"]
+	if(exists){
+		logProp.MorningImage = string(morningImageProperty.GetType())
+	}else{
+		fmt.Println("morningImageProperty is not exists")
+	}
+	myFitnessPalProperty, exists := pageURL.Properties["myFitnessPal"]
+	if(exists){
+		logProp.MyFitnessPal = string(myFitnessPalProperty.GetType())
+	}else{
+		fmt.Println("myFitnessPalProperty is not exists")
+	}
+	todayCalorieProperty, exists := pageURL.Properties["todayCalorie"]
+	if(exists){
+		logProp.TodayCalorie = string(todayCalorieProperty.GetType())
+	}else{
+		fmt.Println("todayCalorieProperty is not exists")
+	}
+	screenTimeProperty, exists := pageURL.Properties["screenTime"]
+	if(exists){
+		logProp.ScreenTime = string(screenTimeProperty.GetType())
+	}else{
+		fmt.Println("screenTimeProperty is not exists")
+	}
+ 	todayScreenTimeProperty, exists := pageURL.Properties["todayScreenTime"]
+	if(exists){
+		logProp.TodayScreenTime = string(todayScreenTimeProperty.GetType())
+	}else{
+		fmt.Println("todayScreenTimeProperty is not exists")
+	}
+	morningActivityTimeProperty, exists := pageURL.Properties["morningActivityTime"]
+	if(exists){
+		logProp.MorningActivityTime = string(morningActivityTimeProperty.GetType())
+	}else{
+		fmt.Println("morningActivityTimeProperty is not exists")
+	}
+	publishedProperty, exists := pageURL.Properties["published"]
+	if(exists){
+		logProp.Published = string(publishedProperty.GetType())
+	}else{
+		fmt.Println("publishedProperty is not exists")
+	}
+	tweetUrlProperty, exists := pageURL.Properties["tweetUrl"]
+	if(exists){
+		logProp.TweetUrl = string(tweetUrlProperty.GetType())
+	}else{
+		fmt.Println("tweetUrlProperty is not exists")
+	}
+	isDiaryDoneProperty, exists := pageURL.Properties["isDiaryDone"]
+	if(exists){
+		logProp.IsDiaryDone = string(isDiaryDoneProperty.GetType())
+	}else{
+		fmt.Println("isDiaryDoneProperty is not exists")
+	}
+	isChatLogDoneProperty, exists := pageURL.Properties["isChatLogDone"]
+	if(exists){
+		logProp.IsChatLogDone = string(isChatLogDoneProperty.GetType())
+	}else{
+		fmt.Println("isChatLogDoneProperty is not exists")
+	}
+	todayHostsImageProperty, exists := pageURL.Properties["todayHostsImage"]
+	if(exists){
+		logProp.TodayHostsImage = string(todayHostsImageProperty.GetType())
+	}else{
+		fmt.Println("todayHostsImageProperty is not exists")
+	}
+
 	if len(pageURL.Title) > 0 {
 			logProp.Title = pageURL.Title[0].PlainText
 	}
@@ -76,4 +134,8 @@ func GetLogProperty() (LogProperty, error)  {
 		logProp.Date = pageURL.CreatedTime.String()
 	}
 	return logProp, err // Titleが空の場合は空文字列を返す
+}
+
+func Println(morningImageProperty notionapi.PropertyConfig) {
+	panic("unimplemented")
 }
