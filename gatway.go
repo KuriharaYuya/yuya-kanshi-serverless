@@ -26,8 +26,6 @@ func Gateway(req Request) *Response {
 		}
 	}()
 
-	// LineBotWebhookが含まれているか
-
 	resp := Response{
 		StatusCode:      200,
 		IsBase64Encoded: false,
