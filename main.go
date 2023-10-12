@@ -4,9 +4,6 @@ import (
 	// "context"
 	// "sync"
 
-	"fmt"
-
-	notionpkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/notion"
 	"github.com/aws/aws-lambda-go/events"
 )
 
@@ -33,8 +30,8 @@ type Response events.APIGatewayProxyResponse
 // }
 
 func main() {
-  res, err :=	notionpkg.GetLogProperty()
-	fmt.Println(res)
-	fmt.Println(err)
+  // res, err :=	notionpkg.GetLogProperty()
+	// fmt.Println(res)
+	// fmt.Println(err)
 	// lambda.Start(Handler)
 }
