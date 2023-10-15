@@ -5,23 +5,16 @@ import (
 	"fmt"
 	"os"
 
+	notionpkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/notion"
 	"github.com/jomei/notionapi"
 )
 
-// TODO:notionapiのインポート整備
-// TODO:destructureForCalenderDataを使えるようにする
 
 func GetLogListFromNow(onlyPublish bool) (LogListOutPut, error) {
 	conditions := switchSearchCondition(onlyPublish)
 	// filterとsortsを適用してクエリを行う
 	params := &notionapi.DatabaseQueryRequest{
-		Filter: conditions,
-		Sorts: []notionapi.SortObject{
-			{
-				Property:  "date",
-				Direction: "descending",
-			},
-		},
+		Filter:  notionpkg.DatabaseQueryFilter(conditions),
 	}
 	integration_token := os.Getenv("NOTION_API_KEY")
 	client := notionapi.NewClient(notionapi.Token(integration_token))
@@ -31,7 +24,10 @@ func GetLogListFromNow(onlyPublish bool) (LogListOutPut, error) {
 		return LogListOutPut{}, err
 	}
 	
+	// TODO dataの型にあっていないので、型を変換する
+	// TODO:destructureForCalenderDataを使えるようにする
 	// calenderData := destructureForCalenderData(data)
+	// TODO dataの型にあっていないので、型を変換する
 	tableData := destructureForTable(data)
 	return LogListOutPut{
 		// CalenderData: calenderData, 
@@ -45,6 +41,7 @@ type LogListOutPut struct {
 	TableData    []LogListType
 }
 
+	// TODO:destructureForCalenderDataを使えるようにする
 // func destructureForCalenderData(data LogListPropertyForGitLikeCalender) CalenderData {
 // 	values := make(map[string]int)
 // 	for _, log := range data.Properties.Date.Date {
@@ -102,7 +99,7 @@ func switchSearchCondition(onlyPublish bool) interface{} {
 func countPublishedLogs(onlyPubLish bool) (int, error) {
 	conditions := switchSearchCondition(onlyPubLish)
 	params := &notionapi.DatabaseQueryRequest{
-		Filter:  conditions,
+		Filter:  notionpkg.DatabaseQueryFilter(conditions),
 		Sorts: []notionapi.SortObject{
 			{
 				Property:  "date",
@@ -119,8 +116,8 @@ func countPublishedLogs(onlyPubLish bool) (int, error) {
 		return 0, err
 	}
 
-	
-	count := len(data)
+	// TODO dataからPublishedLogsのcountを算出
+
 	return count, nil
 }
 
