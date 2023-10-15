@@ -22,7 +22,7 @@ type DateProperty struct {
 }
 
 type FormulaBooleanProperty struct {
-	Fomula struct {Bool bool `json:"boolean"`} `json:"formula"`
+	Formula struct {Bool bool `json:"boolean"`} `json:"formula"`
 }
 
 type FormulaStringProperty struct {

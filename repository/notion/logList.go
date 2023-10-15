@@ -30,6 +30,7 @@ func GetLogListFromNow(onlyPublish bool) (LogListOutPut, error) {
 		fmt.Println("Error:", err)
 		return LogListOutPut{}, err
 	}
+	
 	// calenderData := destructureForCalenderData(data)
 	tableData := destructureForTable(data)
 	return LogListOutPut{
@@ -51,16 +52,15 @@ type LogListOutPut struct {
 // 	}
 // 	return values
 // }
-
 func destructureForTable(data []LogListPropertyForGitLikeCalender) []LogListType {
 	var tgt []LogListType
 	for _, log := range data {
 		logItem := LogListType{
 			UUID:      log.Properties.UUID.Formula.String,
-			Date:      log.Properties.Date.Date,
+			Date:      log.Properties.Date.Date, // 日付にアクセスする際はStartを使用
 			Title:     log.Properties.Title.Title,
-			TweetUrl:  log.Properties.TweetUrl.Url,
-			Published: log.Properties.Published.Fomula.Bool,
+			TweetUrl:  log.Properties.TweetUrl.Url, // URLにアクセスする際は大文字のURLを使用
+			Published: log.Properties.Published.Formula.Bool, // Formulaのスペルが間違っていました
 		}
 		tgt = append(tgt, logItem)
 	}
