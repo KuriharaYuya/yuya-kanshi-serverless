@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+
+	"github.com/jomei/notionapi"
 )
 
 // TODO:notionapiのインポート整備
@@ -12,16 +14,15 @@ import (
 func GetLogListFromNow(onlyPublish bool) (LogListOutPut, error) {
 	conditions := switchSearchCondition(onlyPublish)
 	// filterとsortsを適用してクエリを行う
-	params := &notionapi.DatabaseQueryParams{
+	params := &notionapi.DatabaseQueryRequest{
 		Filter: conditions,
-		Sorts: []notionapi.SortParams{
+		Sorts: []notionapi.SortObject{
 			{
 				Property:  "date",
 				Direction: "descending",
 			},
 		},
 	}
-
 	integration_token := os.Getenv("NOTION_API_KEY")
 	client := notionapi.NewClient(notionapi.Token(integration_token))
 	data, err := client.Database.Query(context.Background(), notionapi.DatabaseID("8af74dfac9a0482bab353741bb355971"), params)
@@ -100,20 +101,25 @@ func switchSearchCondition(onlyPublish bool) interface{} {
 
 func countPublishedLogs(onlyPubLish bool) (int, error) {
 	conditions := switchSearchCondition(onlyPubLish)
-	results, err := notion.Databases.Query(notionapi.DatabaseQuery{
-		DatabaseID: "8af74dfac9a0482bab353741bb355971",
-		Filter:    conditions,
-		Sorts: []notionapi.Sort{
+	params := &notionapi.DatabaseQueryRequest{
+		Filter:  conditions,
+		Sorts: []notionapi.SortObject{
 			{
 				Property:  "date",
 				Direction: "descending",
 			},
 		},
-	})
+	}
+	integration_token := os.Getenv("NOTION_API_KEY")
+	client := notionapi.NewClient(notionapi.Token(integration_token))
+
+	data, err := client.Database.Query(context.Background(), notionapi.DatabaseID("8af74dfac9a0482bab353741bb355971"), params)
+
 	if err != nil {
 		return 0, err
 	}
-	data := results.(LogListPropertyForGitLikeCalender) // タイプアサーションの例
+
+	
 	count := len(data)
 	return count, nil
 }
