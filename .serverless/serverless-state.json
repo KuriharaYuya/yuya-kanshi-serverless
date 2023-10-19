@@ -13,7 +13,8 @@
       "environment": {
         "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
         "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
-        "NOTION_API_KEY": "secret_htiPMbGDUwgvCuzHYQJnS64KAPMYaeyW8yQvNkKhXrC"
+        "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
+        "DEBUG_MODE": "true"
       },
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -179,7 +180,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-test/dev/1697676059319-2023-10-19T00:40:59.319Z/sls-test.zip"
+                "S3Key": "serverless/sls-test/dev/1697679946675-2023-10-19T01:45:46.675Z/sls-test.zip"
               },
               "Handler": "bin/main",
               "Runtime": "go1.x",
@@ -190,7 +191,8 @@
                 "Variables": {
                   "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
                   "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
-                  "NOTION_API_KEY": "secret_htiPMbGDUwgvCuzHYQJnS64KAPMYaeyW8yQvNkKhXrC"
+                  "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
+                  "DEBUG_MODE": "true"
                 }
               },
               "Role": {
@@ -204,14 +206,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersion8jHUPZCK9Py0YFYR3x4tEEi5bp6xhZR23tNRCgwqpQ": {
+          "HelloLambdaVersionAZsIZiHTGdOCvXlf9H4T73ojdy5T56PN8o98OM2x6U": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "sr+OKEzrMUpnIlRWURi9qqfPON1BFZEnfO9D3P9wCvY="
+              "CodeSha256": "dyc8FGBoM4M+uJIihlRt0pNscQ1hwLfSA+qsJZymybU="
             }
           },
           "HttpApi": {
@@ -340,7 +342,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersion8jHUPZCK9Py0YFYR3x4tEEi5bp6xhZR23tNRCgwqpQ"
+              "Ref": "HelloLambdaVersionAZsIZiHTGdOCvXlf9H4T73ojdy5T56PN8o98OM2x6U"
             },
             "Export": {
               "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
@@ -497,7 +499,7 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersion8jHUPZCK9Py0YFYR3x4tEEi5bp6xhZR23tNRCgwqpQ"
+        "versionLogicalId": "HelloLambdaVersionAZsIZiHTGdOCvXlf9H4T73ojdy5T56PN8o98OM2x6U"
       }
     },
     "configValidationMode": "warn",
@@ -518,7 +520,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/sls-test/dev/code-artifacts",
         "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip",
-        "artifactDirectoryName": "serverless/sls-test/dev/1697676059319-2023-10-19T00:40:59.319Z"
+        "artifactDirectoryName": "serverless/sls-test/dev/1697679946675-2023-10-19T01:45:46.675Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -529,7 +531,7 @@
     "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-test/dev/1697676059319-2023-10-19T00:40:59.319Z",
+    "artifactDirectoryName": "serverless/sls-test/dev/1697679946675-2023-10-19T01:45:46.675Z",
     "artifact": "sls-test.zip"
   }
 }
