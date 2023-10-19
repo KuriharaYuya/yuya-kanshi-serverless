@@ -179,7 +179,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-test/dev/1697676059319-2023-10-19T00:40:59.319Z/sls-test.zip"
+                "S3Key": "serverless/sls-test/dev/1696985436590-2023-10-11T00:50:36.590Z/sls-test.zip"
               },
               "Handler": "bin/main",
               "Runtime": "go1.x",
@@ -204,14 +204,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersion8jHUPZCK9Py0YFYR3x4tEEi5bp6xhZR23tNRCgwqpQ": {
+          "HelloLambdaVersion0gH9gGN01kKf12VNNGnmdw4zzLziveqV5RSzW2sJOgU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "sr+OKEzrMUpnIlRWURi9qqfPON1BFZEnfO9D3P9wCvY="
+              "CodeSha256": "tm61OYVYnu/U1q+ESIBVY4UI4auWYKY7nyoVT9dQCgI="
             }
           },
           "HttpApi": {
@@ -340,7 +340,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersion8jHUPZCK9Py0YFYR3x4tEEi5bp6xhZR23tNRCgwqpQ"
+              "Ref": "HelloLambdaVersion0gH9gGN01kKf12VNNGnmdw4zzLziveqV5RSzW2sJOgU"
             },
             "Export": {
               "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
@@ -497,7 +497,7 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersion8jHUPZCK9Py0YFYR3x4tEEi5bp6xhZR23tNRCgwqpQ"
+        "versionLogicalId": "HelloLambdaVersion0gH9gGN01kKf12VNNGnmdw4zzLziveqV5RSzW2sJOgU"
       }
     },
     "configValidationMode": "warn",
@@ -518,7 +518,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/sls-test/dev/code-artifacts",
         "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip",
-        "artifactDirectoryName": "serverless/sls-test/dev/1697676059319-2023-10-19T00:40:59.319Z"
+        "artifactDirectoryName": "serverless/sls-test/dev/1696985436590-2023-10-11T00:50:36.590Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -529,7 +529,7 @@
     "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-test/dev/1697676059319-2023-10-19T00:40:59.319Z",
+    "artifactDirectoryName": "serverless/sls-test/dev/1696985436590-2023-10-11T00:50:36.590Z",
     "artifact": "sls-test.zip"
   }
 }

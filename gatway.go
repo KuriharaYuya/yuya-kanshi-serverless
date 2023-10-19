@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
+	usecase "github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
 )
 
 var buf bytes.Buffer

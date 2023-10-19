@@ -4,7 +4,6 @@ import (
 	// "context"
 	// "sync"
 
-	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
 	"github.com/aws/aws-lambda-go/events"
 )
 
@@ -31,7 +30,7 @@ type Response events.APIGatewayProxyResponse
 // }
 
 func main() {
-	usecase.CheckDailyLog()
+  // res, err :=	notionpkg.GetLogProperty()
 	// fmt.Println(res)
 	// fmt.Println(err)
 	// lambda.Start(Handler)
