@@ -1,3 +1,3 @@
 package utils
 
-const ENVIRONMENT = "development"
+const ENVIRONMENT = "_development"

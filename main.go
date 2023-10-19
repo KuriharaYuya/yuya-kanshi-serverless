@@ -1,12 +1,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"sync"
 
+	"github.com/KuriharaYuya/yuya-kanshi-serverless/gateway"
 	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
 	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
 )
 
@@ -16,19 +19,19 @@ import (
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-// func Handler(ctx context.Context, req utils.Request) (utils.Response, error) {
-// 	var wg sync.WaitGroup
-// 	wg.Add(1)
-// 	// respをポインタ変数として定義
-// 	var resp *utils.Response
-// 	go func() {
-// 		resp = gateway.Gateway(req)
-// 		wg.Done()
-// 	}()
+func Handler(ctx context.Context, req utils.Request) (utils.Response, error) {
+	var wg sync.WaitGroup
+	wg.Add(1)
+	// respをポインタ変数として定義
+	var resp *utils.Response
+	go func() {
+		resp = gateway.Gateway(req)
+		wg.Done()
+	}()
 
-// 	wg.Wait()
-// 	return *resp, nil
-// }
+	wg.Wait()
+	return *resp, nil
+}
 
 func init() {
 	if utils.ENVIRONMENT == "development" {
@@ -61,7 +64,7 @@ func main() {
 		wg.Wait()
 
 	} else {
-		// lambda.Start(Handler)
+		lambda.Start(Handler)
 	}
 
 }

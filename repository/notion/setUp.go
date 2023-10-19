@@ -30,12 +30,12 @@ func CreateClient() *notionapi.Client {
 
 func switchLogDb() string {
 	debugDbID := "b2c4752a33904be3a434f2c6542a4b75"
-	prodDbID := "8af74dfac9a0482bab353741bb355971"
+	// prodDbID := "8af74dfac9a0482bab353741bb355971"
 	debugMode := os.Getenv("DEBUG_MODE")
 	if debugMode == "true" {
 		return debugDbID
 	}
-	return prodDbID
+	return debugDbID
 }
 func setLogDB() (db *notionapi.Database, err error) {
 	dbId := switchLogDb()
