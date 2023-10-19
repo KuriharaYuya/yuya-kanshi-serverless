@@ -10,7 +10,7 @@ import (
 	"sync"
 
 	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
-	"github.com/aws/aws-lambda-go/events"
+	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
 )
@@ -19,15 +19,13 @@ import (
 // AWS Lambda Proxy Request functionality (default behavior)
 //
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
-type Request events.APIGatewayProxyRequest
-type Response events.APIGatewayProxyResponse
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-func Handler(ctx context.Context, req Request) (Response, error) {
+func Handler(ctx context.Context, req utils.Request) (utils.Response, error) {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	// respをポインタ変数として定義
-	var resp *Response
+	var resp *utils.Response
 	go func() {
 		resp = Gateway(req)
 		wg.Done()

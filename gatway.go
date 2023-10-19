@@ -6,6 +6,7 @@ import (
 	"sync"
 
 	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
+	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 )
 
 var buf bytes.Buffer
@@ -13,7 +14,7 @@ var buf bytes.Buffer
 const userAgent = "user-agent"
 const lineBotWebhook = "LineBotWebhook"
 
-func Gateway(req Request) *Response {
+func Gateway(req utils.Request) *utils.Response {
 	wg := sync.WaitGroup{}
 	wg.Add(1)
 	ua := req.Headers[userAgent]
@@ -22,12 +23,11 @@ func Gateway(req Request) *Response {
 		defer wg.Done()
 		// line-bot-request
 		if strings.Contains(ua, lineBotWebhook) {
-			// usecase.CheckDailyLog()
-			linepkg.ReplyToUser("run in gateway")
+			linepkg.LineGateway(req)
 		}
 	}()
 
-	resp := Response{
+	resp := utils.Response{
 		StatusCode:      200,
 		IsBase64Encoded: false,
 		Body:            buf.String(),

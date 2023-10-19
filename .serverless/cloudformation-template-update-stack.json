@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-test/dev/1697679946675-2023-10-19T01:45:46.675Z/sls-test.zip"
+          "S3Key": "serverless/sls-test/dev/1697698293749-2023-10-19T06:51:33.749Z/sls-test.zip"
         },
         "Handler": "bin/main",
         "Runtime": "go1.x",
@@ -188,14 +188,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionAZsIZiHTGdOCvXlf9H4T73ojdy5T56PN8o98OM2x6U": {
+    "HelloLambdaVersionAk2kN9aAxyylkiHtdM4UD7YlAfmXsFrpXl0rxZwaghc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "dyc8FGBoM4M+uJIihlRt0pNscQ1hwLfSA+qsJZymybU="
+        "CodeSha256": "UlZ16feoNKg0cq+iaRoVNl4/Qth2UEUKya+6sjGlFCU="
       }
     },
     "HttpApi": {
@@ -327,7 +327,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionAZsIZiHTGdOCvXlf9H4T73ojdy5T56PN8o98OM2x6U"
+        "Ref": "HelloLambdaVersionAk2kN9aAxyylkiHtdM4UD7YlAfmXsFrpXl0rxZwaghc"
       },
       "Export": {
         "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
