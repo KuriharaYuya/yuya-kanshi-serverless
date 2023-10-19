@@ -25,7 +25,13 @@ func DebugNotionAPI(msg string) {
 	// データを整形し、文字列に格納する
 
 	nameStr := "Name: " + data.Name.Title[0].Text.Content + "\n"
+	// convert bool(data.AllowPublish.Checkbox) to str
+	allow := data.AllowPublish.Checkbox
+
+	allowPublishStr := "\n" + "allowPublish: " + fmt.Sprintf("%t", allow) + "\n"
+
+	replyMsg := nameStr + allowPublishStr
 
 	// 返信する
-	linepkg.ReplyToUser(nameStr)
+	linepkg.ReplyToUser(replyMsg)
 }

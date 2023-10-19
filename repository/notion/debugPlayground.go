@@ -35,7 +35,7 @@ func GetDebugData(publish bool) (DebugLogProperty, error) {
 	}
 	debugLog := DebugLogProperty{
 		Name:         nameProp,
-		allowPublish: allowPublishProp,
+		AllowPublish: allowPublishProp,
 	}
 	return debugLog, nil
 }

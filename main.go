@@ -57,7 +57,7 @@ func main() {
 		// respをポインタ変数として定義
 
 		go func() {
-			usecase.DebugNotionAPI("debug: publish=true")
+			usecase.DebugNotionAPI("debug: publish=false")
 
 			wg.Done()
 		}()
