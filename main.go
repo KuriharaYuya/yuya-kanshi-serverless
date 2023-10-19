@@ -9,7 +9,8 @@ import (
 	"os"
 	"sync"
 
-	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
+	"github.com/KuriharaYuya/yuya-kanshi-serverless/gateway"
+	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
 	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
@@ -27,7 +28,7 @@ func Handler(ctx context.Context, req utils.Request) (utils.Response, error) {
 	// respをポインタ変数として定義
 	var resp *utils.Response
 	go func() {
-		resp = Gateway(req)
+		resp = gateway.Gateway(req)
 		wg.Done()
 	}()
 
@@ -36,19 +37,24 @@ func Handler(ctx context.Context, req utils.Request) (utils.Response, error) {
 }
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Printf("読み込み出来ませんでした: %v", err)
-
+	if os.Getenv("ENVIRONMENT") == "development" {
+		// ローカル開発環境用の処理
+		err := godotenv.Load()
+		if err != nil {
+			fmt.Printf("読み込み出来ませんでした_main.go: %v", err)
+		}
+	} else {
+		// 本番環境用の処理
+		// 例: AWS Secrets Managerから秘密情報を取得する
 	}
+
 }
 
 func main() {
 	debugMode := os.Getenv("DEBUG_MODE")
 	if debugMode == "true" {
-		fmt.Println("デバッグモードです")
 		// run some tgt funcs below
-		usecase.CheckDailyLog()
+		linepkg.ReplyToUser("デバッグモードです")
 
 	} else {
 		lambda.Start(Handler)

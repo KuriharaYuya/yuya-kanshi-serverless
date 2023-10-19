@@ -1,11 +1,10 @@
-package main
+package gateway
 
 import (
 	"bytes"
 	"strings"
 	"sync"
 
-	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
 	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 )
 
@@ -23,7 +22,7 @@ func Gateway(req utils.Request) *utils.Response {
 		defer wg.Done()
 		// line-bot-request
 		if strings.Contains(ua, lineBotWebhook) {
-			linepkg.LineGateway(req)
+			LineGateway(req)
 		}
 	}()
 

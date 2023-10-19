@@ -12,10 +12,15 @@ import (
 var client *notionapi.Client
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Printf("読み込み出来ませんでした: %v", err)
-
+	if os.Getenv("ENVIRONMENT") == "development" {
+		// ローカル開発環境用の処理
+		err := godotenv.Load()
+		if err != nil {
+			fmt.Printf("読み込み出来ませんでした_setUp.go: %v", err)
+		}
+	} else {
+		// 本番環境用の処理
+		// 例: AWS Secrets Managerから秘密情報を取得する
 	}
 	client = CreateClient()
 }

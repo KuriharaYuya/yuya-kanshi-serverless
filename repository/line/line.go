@@ -10,9 +10,15 @@ import (
 )
 
 func ReplyToUser(cnt string) {
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Printf("読み込み出来ませんでした: %v", err)
+	if os.Getenv("ENVIRONMENT") == "development" {
+		// ローカル開発環境用の処理
+		err := godotenv.Load()
+		if err != nil {
+			fmt.Printf("読み込み出来ませんでした_line.go: %v", err)
+		}
+	} else {
+		// 本番環境用の処理
+		// 例: AWS Secrets Managerから秘密情報を取得する
 	}
 
 	secret := os.Getenv("LINE_CHANNEL_SECRET")
