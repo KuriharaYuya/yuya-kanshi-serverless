@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-test/dev/1697701539029-2023-10-19T07:45:39.029Z/sls-test.zip"
+          "S3Key": "serverless/sls-test/dev/1697711982526-2023-10-19T10:39:42.526Z/sls-test.zip"
         },
         "Handler": "bin/main",
         "Runtime": "go1.x",
@@ -174,7 +174,7 @@
             "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
             "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
             "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
-            "DEBUG_MODE": "true"
+            "DEBUG_MODE": "false"
           }
         },
         "Role": {
@@ -188,14 +188,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionLTsf0LRVSj0Rw2YENi0x2AxLuDsDvl9ykMHRofQh3o": {
+    "HelloLambdaVersionx59Q9Df70Ui1AyedghD1d4SSdH0Ee2zY49yHJ2bEeQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "3gY5keVVF0uhj5IeBdSlEnKxln5oDe0Q26+tDlmL93M="
+        "CodeSha256": "RT9vmWcmKdr4y7oMhA0xsXPSr/FIaYFF2s/JwX4Xd50="
       }
     },
     "HttpApi": {
@@ -327,7 +327,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionLTsf0LRVSj0Rw2YENi0x2AxLuDsDvl9ykMHRofQh3o"
+        "Ref": "HelloLambdaVersionx59Q9Df70Ui1AyedghD1d4SSdH0Ee2zY49yHJ2bEeQ"
       },
       "Export": {
         "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"

@@ -19,7 +19,7 @@ func LineGateway(req utils.Request) {
 	// handling usecase with message
 
 	if strings.Contains(msg, "debug") {
-		usecase.DebugNotionAPI()
+		usecase.DebugNotionAPI(msg)
 	}
 
 }

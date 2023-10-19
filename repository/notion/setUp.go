@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/joho/godotenv"
 	"github.com/jomei/notionapi"
 )
@@ -12,15 +13,12 @@ import (
 var client *notionapi.Client
 
 func init() {
-	if os.Getenv("ENVIRONMENT") == "development" {
+	if utils.ENVIRONMENT == "development" {
 		// ローカル開発環境用の処理
 		err := godotenv.Load()
 		if err != nil {
 			fmt.Printf("読み込み出来ませんでした_setUp.go: %v", err)
 		}
-	} else {
-		// 本番環境用の処理
-		// 例: AWS Secrets Managerから秘密情報を取得する
 	}
 	client = CreateClient()
 }

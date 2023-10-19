@@ -29,6 +29,5 @@ func GetLog(date string) (interface{}, error) {
 		fmt.Println("エラー")
 		return nil, err
 	}
-	debug(results)
 	return results, nil
 }

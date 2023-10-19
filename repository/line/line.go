@@ -5,12 +5,13 @@ import (
 	"log"
 	"os"
 
+	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/joho/godotenv"
 	"github.com/line/line-bot-sdk-go/v7/linebot"
 )
 
 func ReplyToUser(cnt string) {
-	if os.Getenv("ENVIRONMENT") == "development" {
+	if utils.ENVIRONMENT == "development" {
 		// ローカル開発環境用の処理
 		err := godotenv.Load()
 		if err != nil {
