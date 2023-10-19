@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
+	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
 )
 
 var buf bytes.Buffer
@@ -22,7 +22,8 @@ func Gateway(req Request) *Response {
 		defer wg.Done()
 		// line-bot-request
 		if strings.Contains(ua, lineBotWebhook) {
-			usecase.CheckDailyLog()
+			// usecase.CheckDailyLog()
+			linepkg.ReplyToUser("run in gateway")
 		}
 	}()
 
