@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"sync"
 
 	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
@@ -13,14 +12,13 @@ func CheckDailyLog() {
 	wg.Add(1)
 
 	go func() {
-		url, err := notionpkg.GetLog()
-		fmt.Println(url)
+		_, err := notionpkg.GetLog("2021-09-01")
 		if err != nil {
-			linepkg.ReplyToUser("日報の取得に失敗しました")
+			linepkg.ReplyToUser(err.Error())
 			wg.Done()
 			return
 		}
-		linepkg.ReplyToUser("aa")
+		// linepkg.ReplyToUser("aa")
 		wg.Done()
 	}()
 	wg.Wait()
