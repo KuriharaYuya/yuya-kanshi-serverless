@@ -14,6 +14,10 @@
         "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
         "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
         "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
+        "SECRET_ID": "AKIAQ5DN4KS3HDCS454A",
+        "SECRET_KEY": "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",
+        "BUCKET_NAME": "yuya-kanhsi-serverless",
+        "REGION": "us-east-1",
         "DEBUG_MODE": "false"
       },
       "compiledCloudFormationTemplate": {
@@ -180,7 +184,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-test/dev/1697841715118-2023-10-20T22:41:55.118Z/sls-test.zip"
+                "S3Key": "serverless/sls-test/dev/1697915307306-2023-10-21T19:08:27.306Z/sls-test.zip"
               },
               "Handler": "bin/main",
               "Runtime": "go1.x",
@@ -192,6 +196,10 @@
                   "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
                   "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
                   "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
+                  "SECRET_ID": "AKIAQ5DN4KS3HDCS454A",
+                  "SECRET_KEY": "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",
+                  "BUCKET_NAME": "yuya-kanhsi-serverless",
+                  "REGION": "us-east-1",
                   "DEBUG_MODE": "false"
                 }
               },
@@ -206,14 +214,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionEYup6D7QmlZwhNZS53y0dTnv7xPM1ZLFSKklAYk": {
+          "HelloLambdaVersionGOvkPwxzN7KhsY43VLhYEcyobxtffvnAtanu6Tz7XN0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "9kE2n1gcsYaoYaOikNyD+jY1n58WhRjD+AyVUzlcsho="
+              "CodeSha256": "ONcWBhnPehOP958ziL8S+aQAa0OAu8ftL8cdUU2uR78="
             }
           },
           "HttpApi": {
@@ -342,7 +350,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionEYup6D7QmlZwhNZS53y0dTnv7xPM1ZLFSKklAYk"
+              "Ref": "HelloLambdaVersionGOvkPwxzN7KhsY43VLhYEcyobxtffvnAtanu6Tz7XN0"
             },
             "Export": {
               "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
@@ -499,7 +507,7 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionEYup6D7QmlZwhNZS53y0dTnv7xPM1ZLFSKklAYk"
+        "versionLogicalId": "HelloLambdaVersionGOvkPwxzN7KhsY43VLhYEcyobxtffvnAtanu6Tz7XN0"
       }
     },
     "configValidationMode": "warn",
@@ -520,7 +528,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/sls-test/dev/code-artifacts",
         "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip",
-        "artifactDirectoryName": "serverless/sls-test/dev/1697841715118-2023-10-20T22:41:55.118Z"
+        "artifactDirectoryName": "serverless/sls-test/dev/1697915307306-2023-10-21T19:08:27.306Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -531,7 +539,7 @@
     "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-test/dev/1697841715118-2023-10-20T22:41:55.118Z",
+    "artifactDirectoryName": "serverless/sls-test/dev/1697915307306-2023-10-21T19:08:27.306Z",
     "artifact": "sls-test.zip"
   }
 }

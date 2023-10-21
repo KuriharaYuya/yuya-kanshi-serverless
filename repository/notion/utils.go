@@ -3,6 +3,7 @@ package notionpkg
 import (
 	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/jomei/notionapi"
@@ -96,7 +97,7 @@ func serializeToLogProp(result *notionapi.DatabaseQueryResponse) (LifeLog, error
 		UUID:                uuidProp.Formula.String,
 		FilledAtr:           filledAtrProp.Formula.Boolean,
 		Title:               titleProp.Title[0].PlainText,
-		Date:                dateProp.Date.Start.String(),
+		Date:                convertDateFormat(dateProp.Date.Start.String()),
 		MorningImage:        morningImageProp.Files[0].File.URL,
 		MyFitnessPal:        myFitnessPalProp.Files[0].File.URL,
 		TodayCalorie:        int(todayCalorieProp.Number),
@@ -109,7 +110,6 @@ func serializeToLogProp(result *notionapi.DatabaseQueryResponse) (LifeLog, error
 		IsChatLogDone:       isChatLogDoneProp.Checkbox,
 		TodayHostsImage:     todayHostsImageProp.Files[0].File.URL,
 	}
-
 	return log, nil
 }
 
@@ -117,7 +117,7 @@ func parseTime(date string) time.Time {
 	// dateを正規表現で検証する。
 	re := regexp.MustCompile(`\d{4}-\d{2}-\d{2}`)
 	if !re.MatchString(date) {
-		panic("日付の形式が正しくありません")
+		panic("日付の形式が正しくありません" + date)
 	}
 
 	// parsedTime, err := time.Parse("2006-01-02", date)
@@ -138,4 +138,10 @@ func createDateQuery(targetDate notionapi.Date) *notionapi.DatabaseQueryRequest 
 		},
 	}
 	return q
+}
+
+func convertDateFormat(dateStr string) string {
+	parts := strings.Split(dateStr, "T")
+	datePart := parts[0]
+	return datePart
 }
