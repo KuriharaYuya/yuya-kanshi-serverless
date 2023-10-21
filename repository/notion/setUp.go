@@ -28,17 +28,13 @@ func CreateClient() *notionapi.Client {
 	return notionapi.NewClient(notionapi.Token(integration_token))
 }
 
-func switchLogDb() string {
-	debugDbID := "b2c4752a33904be3a434f2c6542a4b75"
-	// prodDbID := "8af74dfac9a0482bab353741bb355971"
-	debugMode := os.Getenv("DEBUG_MODE")
-	if debugMode == "true" {
-		return debugDbID
-	}
-	return debugDbID
-}
+const (
+	debugDbID = "b2c4752a33904be3a434f2c6542a4b75"
+	prodDbID  = "8af74dfac9a0482bab353741bb355971"
+)
+
 func setLogDB() (db *notionapi.Database, err error) {
-	dbId := switchLogDb()
+	dbId := prodDbID
 	db, err = client.Database.Get(context.Background(), notionapi.DatabaseID(dbId))
 	if err != nil {
 		return nil, err
