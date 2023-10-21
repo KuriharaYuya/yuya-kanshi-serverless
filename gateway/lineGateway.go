@@ -25,10 +25,13 @@ func LineGateway(req utils.Request) {
 
 	if strings.Contains(msg, "コンソール") {
 		consoleType := detectConsole(msg)
-		date := ExtractDate(msg)
+		date := ExtractDate(msg, consoleType)
 
 		if consoleType == status {
 			usecase.CheckDailyLog(date)
+		}
+		if consoleType == post {
+			usecase.PostDailyLog(date)
 		}
 		return
 	}
@@ -48,22 +51,27 @@ func extractMsg(req utils.Request) (msg string, err error) {
 	return "", nil
 }
 
-func ExtractDate(msg string) (date string) {
-	// ex msg) コンソール: ステータス2023/08/13
-
-	// まず日付を抽出する
-	// ステータスまたは投稿という文字列が含まれているか確認し、含まれていればそこからテキストの終わりまでを抽出する
-	dateString := strings.Split(msg, "ステータス")[1]
-
-	//  スラッシュをハイフンに変換する
-	return strings.Replace(dateString, "/", "-", -1)
-}
-
 const (
 	other  = 0
 	status = 1
 	post   = 2
 )
+
+// func ExtractDate(msg string) (date string) {
+func ExtractDate(msg string, consoleType int) (date string) {
+
+	// まず日付を抽出する
+	var dateString string
+	if consoleType == status {
+		dateString = strings.Split(msg, "ステータス")[1]
+	}
+	if consoleType == post {
+		dateString = strings.Split(msg, "投稿")[1]
+	}
+
+	//  スラッシュをハイフンに変換する
+	return strings.Replace(dateString, "/", "-", -1)
+}
 
 func detectConsole(msg string) (date int) {
 
