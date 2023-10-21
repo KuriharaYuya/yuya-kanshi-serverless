@@ -7,27 +7,25 @@ import (
 	"github.com/jomei/notionapi"
 )
 
-func GetLog(date string) (interface{}, error) {
+func GetLog(date string) (LifeLog, error) {
 	db, err := setLogDB()
 	if err != nil {
-		return nil, err
+		return LifeLog{}, err
 	}
 
+	parsedTime := parseTime(date)
+
+	// time.Time 型を notionapiのDate 型へキャスト
+	targetDate := notionapi.Date(parsedTime)
+
 	// クエリを作成
-	query := &notionapi.DatabaseQueryRequest{
-		Filter: notionapi.PropertyFilter{
-			Property: "allowPublish",
-			Checkbox: &notionapi.CheckboxFilterCondition{
-				Equals: true,
-			},
-		},
-	}
+	query := createDateQuery(targetDate)
 
 	// クエリを使用してデータを取得
 	results, err := client.Database.Query(context.Background(), notionapi.DatabaseID(db.ID), query)
 	if err != nil {
-		fmt.Println("エラー")
-		return nil, err
+		fmt.Println("repository/notion/getLog.goのdatabase.Queryでエラーが発生しました", err)
+		return LifeLog{}, err
 	}
-	return results, nil
+	return serializeToLogProp(results)
 }

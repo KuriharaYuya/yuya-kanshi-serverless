@@ -24,18 +24,35 @@ func GetDebugData(publish bool) (DebugLogProperty, error) {
 	}
 
 	resultProps := results.Results[0].Properties
-	nameProp, nameOk := resultProps["Name"].(*notionapi.TitleProperty)
-	allowPublishProp, allowPublishOk := resultProps["allowPublish"].(*notionapi.CheckboxProperty)
-
-	// name ok
-	if !nameOk || !allowPublishOk {
-		fmt.Println("Error extracting properties")
-		fmt.Println(nameProp, "resultProps")
-		return DebugLogProperty{}, err
+	props := map[string]interface{}{
+		"Name":         &notionapi.TitleProperty{},
+		"allowPublish": &notionapi.CheckboxProperty{},
 	}
-	debugLog := DebugLogProperty{
-		Name:         nameProp,
-		AllowPublish: allowPublishProp,
+
+	debugLog := DebugLogProperty{}
+	for key := range props {
+		prop, ok := resultProps[key]
+		if !ok {
+			fmt.Println("Error: ", key, " property not found.")
+			return DebugLogProperty{}, err
+		}
+
+		switch key {
+		case "Name":
+			if nameProp, ok := prop.(*notionapi.TitleProperty); ok {
+				debugLog.Name = nameProp
+			} else {
+				fmt.Println("Error extracting properties for ", key)
+				return DebugLogProperty{}, err
+			}
+		case "allowPublish":
+			if allowPublishProp, ok := prop.(*notionapi.CheckboxProperty); ok {
+				debugLog.AllowPublish = allowPublishProp
+			} else {
+				fmt.Println("Error extracting properties for ", key)
+				return DebugLogProperty{}, err
+			}
+		}
 	}
 	return debugLog, nil
 }

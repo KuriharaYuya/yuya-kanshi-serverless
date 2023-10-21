@@ -7,7 +7,6 @@ import (
 	"sync"
 
 	"github.com/KuriharaYuya/yuya-kanshi-serverless/gateway"
-	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
 	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
@@ -57,7 +56,7 @@ func main() {
 		// respをポインタ変数として定義
 
 		go func() {
-			usecase.DebugNotionAPI("debug: publish=false")
+			gateway.ExtractDate("コンソール: ステータス2023/08/13")
 
 			wg.Done()
 		}()
