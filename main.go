@@ -57,7 +57,7 @@ func main() {
 		// respをポインタ変数として定義
 
 		go func() {
-			usecase.PostDailyLog("2023-08-13")
+			usecase.PostDailyLog("2023-08-14")
 			wg.Done()
 		}()
 		wg.Wait()

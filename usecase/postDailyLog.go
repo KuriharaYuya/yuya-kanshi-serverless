@@ -18,12 +18,18 @@ func PostDailyLog(date string) {
 	var msg string
 	go func() {
 		defer wg.Done()
-		d, _ := notionpkg.GetLog(date)
-		marshaled, _ := json.Marshal(d)
+		l, _ := notionpkg.GetLog(date)
+
+		storage.UploadImages(&l, s)
+
+		m := notionpkg.MorningTemplate(&l)
+		d := notionpkg.DeviceTemplate(&l)
+		h := notionpkg.HealthTemplate(&l)
+		notionpkg.AppendContentToPage("fd7093e6ef1a4e1ebeab0a7878c12138", &m, &d, &h)
+
+		marshaled, _ := json.Marshal(l)
 		msg = string(marshaled)
 		fmt.Println(msg)
-
-		storage.UploadImages(&d, s)
 	}()
 
 	wg.Wait() // この行でgoroutineが完了するのを待ちます。
