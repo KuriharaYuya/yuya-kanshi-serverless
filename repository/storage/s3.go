@@ -9,6 +9,7 @@ import (
 	"os"
 
 	notionpkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/notion"
+	repoutils "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/utils"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -27,8 +28,10 @@ const (
 	TodayHostsImage = "todayHostsImage"
 )
 
-func s3FileName(logDate string, imageType string) string {
-	return fmt.Sprintf("%s_%s.png", logDate, imageType)
+func DefineImageUrlAndPath(logDate string, imageType string) (s3URL string, localPath string) {
+	localPath = repoutils.S3FileName(logDate, imageType)
+	s3URL = repoutils.DefineImageURLs(localPath)
+	return s3URL, localPath
 }
 
 type s3ImageUrls notionImageUrls
@@ -84,17 +87,14 @@ func (s Session) uploadToS3(path string) error {
 	if err != nil {
 		log.Printf("failed to upload %s, error: %v", path, err.Error())
 	}
-	url := "https://%s.s3-%s.amazonaws.com/images/%s"
-	url = fmt.Sprintf(url, os.Getenv("BUCKET_NAME"), os.Getenv("REGION"), path)
+	url := repoutils.DefineImageURLs(refPath)
 	fmt.Printf("Uploaded File Url %s\n", url)
 
 	return nil
 }
 
-func downloadFromUrl(logDate string, imageType string, imageUrl string) (tmpAndFname string) {
-	fname := s3FileName(logDate, imageType)
-	tmpAndFname = "/tmp/" + fname
-	f, err := os.Create(tmpAndFname)
+func downloadFromUrl(logDate string, imageType string, imageUrl string, localImagePath string) string {
+	f, err := os.Create(localImagePath)
 
 	if err != nil {
 		log.Fatal(err)
@@ -117,7 +117,7 @@ func downloadFromUrl(logDate string, imageType string, imageUrl string) (tmpAndF
 	}
 
 	fmt.Println("image downloaded")
-	return tmpAndFname
+	return localImagePath
 }
 
 func deleteFile(fname string) {
@@ -141,11 +141,13 @@ func UploadImages(log *notionpkg.LifeLog, s *Session) uploadImages {
 	// その後、ダウンロードした画像を削除する
 
 	for imageType, imageUrl := range imageProps {
-		path := downloadFromUrl(logDate, imageType, imageUrl)
+		s3URL, localPath := DefineImageUrlAndPath(logDate, imageType)
+		downloadFromUrl(logDate, imageType, imageUrl, localPath)
 		// uploadする
-		s.uploadToS3(path)
+		s.uploadToS3(localPath)
 		// その後、削除する
-		deleteFile(path)
+		deleteFile(localPath)
+		fmt.Println(s3URL)
 
 	}
 	return uploadImages{}
@@ -161,3 +163,11 @@ func getImagesProps(log *notionpkg.LifeLog) notionImageUrls {
 
 	return data
 }
+
+// func replaceImageURLToS3(lifeLog *notionpkg.LifeLog) *notionpkg.LifeLog {
+// 	// images/tmp/2021-08-14_morningImage.png
+// 	path :=
+// 	newLifeLog := notionpkg.LifeLog{
+// 		MorningImage:   repoutils.DefineImageURLs(S3FileName(lifeLog.Date, MorningImage)),
+// 	}
+// }
