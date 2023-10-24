@@ -26,6 +26,7 @@ const (
 	MyFitnessPal    = "myFitnessPal"
 	ScreenTime      = "screenTime"
 	TodayHostsImage = "todayHostsImage"
+	CalenderPic     = "calenderPic"
 )
 
 func DefineImageUrlAndPath(logDate string, imageType string) (s3URL string, localPath string) {
@@ -94,6 +95,9 @@ func (s Session) uploadToS3(path string) error {
 }
 
 func downloadFromUrl(logDate string, imageType string, imageUrl string, localImagePath string) string {
+	if imageUrl == "" {
+		panic("imageUrl is empty: repository/storage/s3.go")
+	}
 	f, err := os.Create(localImagePath)
 
 	if err != nil {
@@ -159,6 +163,7 @@ func getImagesProps(log *notionpkg.LifeLog) notionImageUrls {
 		MyFitnessPal:    log.MyFitnessPal,
 		ScreenTime:      log.ScreenTime,
 		TodayHostsImage: log.TodayHostsImage,
+		CalenderPic:     log.CalenderPicture,
 	}
 
 	return data

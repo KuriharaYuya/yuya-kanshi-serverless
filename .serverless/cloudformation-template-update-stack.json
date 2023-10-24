@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-test/dev/1698093188711-2023-10-23T20:33:08.711Z/sls-test.zip"
+          "S3Key": "serverless/sls-test/dev/1698115760741-2023-10-24T02:49:20.741Z/sls-test.zip"
         },
         "Handler": "bin/main",
         "Runtime": "go1.x",
@@ -171,8 +171,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "LINE_CHANNEL_SECRET": "7b75e05fdcc22c1d6ca93e101d16bb77",
-            "LINE_CHANNEL_ACCESS_TOKEN": "I/rzz+8GH4JFmjNzuUeTNojZExbNRJjvfCXzE29pEh8cKn5OVj7XiE3PLhw3ymJgTNFlRF2tHVjuj4Wla8SM8h3G25ng1pXGHl10KuYBeb51HUMX47X+IfhEHy1mPBujP/z88yic5U4rlzp4+QX0bAdB04t89/1O/w1cDnyilFU=",
+            "LINE_CHANNEL_SECRET": "961493c9d42693a141858a97cdd48192",
+            "LINE_CHANNEL_ACCESS_TOKEN": "r0aOeDgZQ6u8kpU3GVrQoQZPoC6O8cJDuvBXtCou5uQQIz4XcjKQ3QxOEPNMnNHpqnU6SmpgsIetNTaEGmyyjKwrMQwCcOWmAVEUk8vG8vbytoBdfqymd2XB0ZP8Zt5Pa99DloVP0BkpfP5n99q1oQdB04t89/1O/w1cDnyilFU=",
             "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
             "SECRET_ID": "AKIAQ5DN4KS3HDCS454A",
             "SECRET_KEY": "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",
@@ -192,14 +192,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionLpwuMOIjiucetDTnhOHSf4YdiZOAlrN70vCh8AjiSQ": {
+    "HelloLambdaVersionJDI4EYDF5ROWpiec6pD5KbwYKUCiusvJNciTs7DOLw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "iTjpxAHFxHdOq+f7GONF1K2meDeFqoNlF1S8M3FXFXk="
+        "CodeSha256": "s1lguFr6wEkaucv/d8FfMMinh55DMlrMrf8SqMVEo9s="
       }
     },
     "HttpApi": {
@@ -331,7 +331,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionLpwuMOIjiucetDTnhOHSf4YdiZOAlrN70vCh8AjiSQ"
+        "Ref": "HelloLambdaVersionJDI4EYDF5ROWpiec6pD5KbwYKUCiusvJNciTs7DOLw"
       },
       "Export": {
         "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"

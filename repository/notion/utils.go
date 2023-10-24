@@ -123,6 +123,16 @@ func serializeToLogProp(result *notionapi.DatabaseQueryResponse) (LifeLog, error
 		panic("failed to cast TrainingPageRelation property")
 	}
 
+	allowPublishProp, ok := resultProps[NotionAllowPublish].(*notionapi.CheckboxProperty)
+	if !ok || allowPublishProp == nil {
+		panic("failed to cast AllowPublish property")
+	}
+
+	calenderPictureProp, ok := resultProps[NotionCalenderPicture].(*notionapi.FilesProperty)
+	if !ok || calenderPictureProp == nil {
+		panic("failed to cast CalenderPicture property")
+	}
+
 	log := LifeLog{
 		UUID:                         uuidProp.Formula.String,
 		FilledAtr:                    filledAtrProp.Formula.Boolean,
@@ -144,6 +154,8 @@ func serializeToLogProp(result *notionapi.DatabaseQueryResponse) (LifeLog, error
 		MorningActPlace:              digRollupText(morningActPlaceProp),
 		MonthlyScreenTime:            digRollupNumber(monthlyScreenTimeProp),
 		TrainingPageId:               digRollupFormulaText(trainingPageRelationProp),
+		AllowPublish:                 allowPublishProp.Checkbox,
+		CalenderPicture:              calenderPictureProp.Files[0].File.URL,
 	}
 	return log, nil
 }
@@ -266,7 +278,7 @@ func quoteTemplate(text string) *notionapi.QuoteBlock {
 
 func imageTemplate(lifeLog *LifeLog, imageType string) *notionapi.ImageBlock {
 	// constにない名前なら早期リターンする
-	if imageType != NotionMorningImage && imageType != NotionScreenTime && imageType != NotionTodayHostsImage && imageType != NotionMyFitnessPal {
+	if imageType != NotionMorningImage && imageType != NotionScreenTime && imageType != NotionTodayHostsImage && imageType != NotionMyFitnessPal && imageType != NotionCalenderPicture {
 		// imageTypeが不正なら、valueをpanicで表示
 		panic("imageTypeが不正です" + imageType)
 	}

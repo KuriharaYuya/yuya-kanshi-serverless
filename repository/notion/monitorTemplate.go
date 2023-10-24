@@ -89,6 +89,26 @@ func DeviceTemplate(log *LifeLog) notionapi.AppendBlockChildrenRequest {
 	return newToggleBlock
 }
 
+func DiaryHeaderTemplate(log *LifeLog) notionapi.AppendBlockChildrenRequest {
+	// 	## 日記
+
+	// これまでの記録を全て見る
+	listPageLinkQuote := quoteTemplate("これまでの記録を全て見る")
+	listPageLink := pageTemplate(YuyaKanshiPageId)
+	diaryTitle := head3Template("本日の予定")
+	diaryCalenderImg := imageTemplate(log, NotionCalenderPicture)
+	newBlocks := notionapi.AppendBlockChildrenRequest{
+		Children: []notionapi.Block{
+			listPageLinkQuote,
+			listPageLink,
+			diaryTitle,
+			diaryCalenderImg,
+		},
+	}
+	newToggleBlock := toggleTemplate("サマリー", &newBlocks)
+	return newToggleBlock
+}
+
 func HealthTemplate(log *LifeLog) notionapi.AppendBlockChildrenRequest {
 	// 	## 食事
 	healthTitle := head3Template("食事")

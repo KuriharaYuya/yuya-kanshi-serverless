@@ -28,6 +28,8 @@ type LifeLogProperty struct {
 	MorningActPlace              *notionapi.RollupProperty
 	MonthlyScreenTime            *notionapi.RollupProperty
 	TrainingPageRelation         *notionapi.RelationProperty
+	AllowPublish                 *notionapi.CheckboxProperty
+	CalenderPicture              *notionapi.FilesProperty
 }
 
 type LifeLog struct {
@@ -52,6 +54,8 @@ type LifeLog struct {
 	MonthlyScreenTime            int
 	ScreenTimeImage              string
 	TrainingPageId               string
+	AllowPublish                 bool
+	CalenderPicture              string
 }
 
 const (
@@ -75,4 +79,8 @@ const (
 	NotionMorningActPlace              = "_morningActPlace"
 	NotionMonthlyScreenTime            = "_monthlyScreenTime"
 	NotionTrainingRelationPage         = "_trainingpageUUID"
+	NotionAllowPublish                 = "allowPublish"
+	NotionCalenderPicture              = "calenderPicture"
 )
+
+const YuyaKanshiPageId = "92a5712217cb4933968c5bfd19ee2c0d"
