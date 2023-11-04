@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/KuriharaYuya/yuya-kanshi-serverless/gateway"
-	"github.com/KuriharaYuya/yuya-kanshi-serverless/usecase"
+	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
 	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
@@ -57,10 +57,10 @@ func main() {
 		// respをポインタ変数として定義
 
 		go func() {
+			linepkg.Announce("test")
+			defer wg.Done()
+			// リクエストをを全てunmarshalして表示する
 
-			usecase.PostDailyLog("2023-08-14")
-			// linepkg.ReplyToUser("debug mode")
-			wg.Done()
 		}()
 		wg.Wait()
 

@@ -61,6 +61,7 @@ package:
 functions:
   hello:
     handler: bin/main
+    timeout: 20
     events:
       - httpApi:
           path: /hello

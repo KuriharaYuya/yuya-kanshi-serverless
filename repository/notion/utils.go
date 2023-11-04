@@ -371,15 +371,20 @@ func digRollupText(rollup *notionapi.RollupProperty) string {
 	if len(match) > 1 {
 		return match[1]
 	}
-
 	return ""
 }
 
 func digRollupFormulaText(rollup *notionapi.RollupProperty) string {
+	if len(rollup.Rollup.Array) == 0 {
+		return ""
+	}
 	j, err := json.Marshal(rollup.Rollup.Array[0])
 	// _trainingpageUUID":{"id":"Mlh%40","type":"rollup","rollup":{"type":"array","array":[{"type":"formula","formula":{"type":"string","string":"82344e07205346949c3881f4126bced7"}}]}},
+
 	if err != nil {
-		panic(err)
+		// error
+		fmt.Println("error", err)
+		return ""
 	}
 
 	regex := regexp.MustCompile(`"string":"([^"]+)"`)

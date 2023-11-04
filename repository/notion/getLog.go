@@ -68,3 +68,17 @@ func getData(date string) (*notionapi.DatabaseQueryResponse, error) {
 	}
 	return results, nil
 }
+
+func GetLogData(date string) (log *LifeLog) {
+	result, err := getData(date)
+	if err != nil {
+		fmt.Println("repository/notion/getLog.goのgetDataでエラーが発生しました", err)
+		return
+	}
+	l, err := serializeToLogProp(result)
+	if err != nil {
+		fmt.Println("repository/notion/getLog.goのserializeToLogPropでエラーが発生しました", err)
+		return
+	}
+	return &l
+}

@@ -13,11 +13,18 @@
       "environment": {
         "LINE_CHANNEL_SECRET": "961493c9d42693a141858a97cdd48192",
         "LINE_CHANNEL_ACCESS_TOKEN": "r0aOeDgZQ6u8kpU3GVrQoQZPoC6O8cJDuvBXtCou5uQQIz4XcjKQ3QxOEPNMnNHpqnU6SmpgsIetNTaEGmyyjKwrMQwCcOWmAVEUk8vG8vbytoBdfqymd2XB0ZP8Zt5Pa99DloVP0BkpfP5n99q1oQdB04t89/1O/w1cDnyilFU=",
+        "LINE_NOTIFY_CHANNEL_SECRET": "f7b2e014194becb3937a2cae57faa7a7",
+        "LINE_NOTIFY_CHANNEL_ACCESS_TOKEN": "DHaxyqRWCMj3UdIL7fEmryJUmU8UTNxLaW9jQLhNDeVOL+weS5fZg0x/3+5Siz1skp5z0hz05xHb+dh1WkLr9F/BPe1pA8jm6/rFHyHe+UoIEg72+jKzeN+kvG+2xQNELu+HGEkuHbJpGtgNa72jKwdB04t89/1O/w1cDnyilFU=",
         "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
         "SECRET_ID": "AKIAQ5DN4KS3HDCS454A",
         "SECRET_KEY": "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",
         "BUCKET_NAME": "yuya-kanhsi-serverless",
         "REGION": "us-east-1",
+        "GOTWI_API_KEY": "HhEucSBCdBQ1oNMEVpXvvIGIP",
+        "GOTWI_API_KEY_SECRET": "zkSM2iqjpZmJ21u1A0AaB8MvDaFNlOJYIBLOBO7jggvStlORfa",
+        "GOTWI_ACCESS_TOKEN": "3223240382-H9nb6qx4L0yrSGhudmW40KdvN6Xz21ivwD0b5X5",
+        "GOTWI_ACCESS_TOKEN_SECRET": "HPZbskBhQenE2vVNqfeWAQNkUYILLW9YchWAubZcYABBQ",
+        "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAAKmCnQEAAAAA8HZnNaRYXjM1z5W0HqMn%2FLyzpqg%3DyYBFMBosBfquJxUjnE1ufYzAA8AKciwgHMaFj3qpYO4cO60WdZ",
         "DEBUG_MODE": "false"
       },
       "compiledCloudFormationTemplate": {
@@ -184,22 +191,29 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-test/dev/1698115760741-2023-10-24T02:49:20.741Z/sls-test.zip"
+                "S3Key": "serverless/sls-test/dev/1699106192931-2023-11-04T13:56:32.931Z/sls-test.zip"
               },
               "Handler": "bin/main",
               "Runtime": "go1.x",
               "FunctionName": "sls-test-dev-hello",
               "MemorySize": 1024,
-              "Timeout": 6,
+              "Timeout": 20,
               "Environment": {
                 "Variables": {
                   "LINE_CHANNEL_SECRET": "961493c9d42693a141858a97cdd48192",
                   "LINE_CHANNEL_ACCESS_TOKEN": "r0aOeDgZQ6u8kpU3GVrQoQZPoC6O8cJDuvBXtCou5uQQIz4XcjKQ3QxOEPNMnNHpqnU6SmpgsIetNTaEGmyyjKwrMQwCcOWmAVEUk8vG8vbytoBdfqymd2XB0ZP8Zt5Pa99DloVP0BkpfP5n99q1oQdB04t89/1O/w1cDnyilFU=",
+                  "LINE_NOTIFY_CHANNEL_SECRET": "f7b2e014194becb3937a2cae57faa7a7",
+                  "LINE_NOTIFY_CHANNEL_ACCESS_TOKEN": "DHaxyqRWCMj3UdIL7fEmryJUmU8UTNxLaW9jQLhNDeVOL+weS5fZg0x/3+5Siz1skp5z0hz05xHb+dh1WkLr9F/BPe1pA8jm6/rFHyHe+UoIEg72+jKzeN+kvG+2xQNELu+HGEkuHbJpGtgNa72jKwdB04t89/1O/w1cDnyilFU=",
                   "NOTION_API_KEY": "secret_oYetYnR5Ba87ZXTScLwNbrVlrd0OuTpfIFmzkRqhXrU",
                   "SECRET_ID": "AKIAQ5DN4KS3HDCS454A",
                   "SECRET_KEY": "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",
                   "BUCKET_NAME": "yuya-kanhsi-serverless",
                   "REGION": "us-east-1",
+                  "GOTWI_API_KEY": "HhEucSBCdBQ1oNMEVpXvvIGIP",
+                  "GOTWI_API_KEY_SECRET": "zkSM2iqjpZmJ21u1A0AaB8MvDaFNlOJYIBLOBO7jggvStlORfa",
+                  "GOTWI_ACCESS_TOKEN": "3223240382-H9nb6qx4L0yrSGhudmW40KdvN6Xz21ivwD0b5X5",
+                  "GOTWI_ACCESS_TOKEN_SECRET": "HPZbskBhQenE2vVNqfeWAQNkUYILLW9YchWAubZcYABBQ",
+                  "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAAKmCnQEAAAAA8HZnNaRYXjM1z5W0HqMn%2FLyzpqg%3DyYBFMBosBfquJxUjnE1ufYzAA8AKciwgHMaFj3qpYO4cO60WdZ",
                   "DEBUG_MODE": "false"
                 }
               },
@@ -214,14 +228,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionJDI4EYDF5ROWpiec6pD5KbwYKUCiusvJNciTs7DOLw": {
+          "HelloLambdaVersionTglhT9pGLEzcoiL6Ko9WWfq8J9qZ8Kaf7uvtV1Albxg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "s1lguFr6wEkaucv/d8FfMMinh55DMlrMrf8SqMVEo9s="
+              "CodeSha256": "iOmRJ2UatV19Ch1btZMJeoXnLvNhqIJSCOkPobTjju0="
             }
           },
           "HttpApi": {
@@ -350,7 +364,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionJDI4EYDF5ROWpiec6pD5KbwYKUCiusvJNciTs7DOLw"
+              "Ref": "HelloLambdaVersionTglhT9pGLEzcoiL6Ko9WWfq8J9qZ8Kaf7uvtV1Albxg"
             },
             "Export": {
               "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
@@ -483,6 +497,7 @@
     "functions": {
       "hello": {
         "handler": "bin/main",
+        "timeout": 20,
         "events": [
           {
             "httpApi": {
@@ -504,10 +519,9 @@
         "name": "sls-test-dev-hello",
         "package": {},
         "memory": 1024,
-        "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionJDI4EYDF5ROWpiec6pD5KbwYKUCiusvJNciTs7DOLw"
+        "versionLogicalId": "HelloLambdaVersionTglhT9pGLEzcoiL6Ko9WWfq8J9qZ8Kaf7uvtV1Albxg"
       }
     },
     "configValidationMode": "warn",
@@ -528,7 +542,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/sls-test/dev/code-artifacts",
         "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip",
-        "artifactDirectoryName": "serverless/sls-test/dev/1698115760741-2023-10-24T02:49:20.741Z"
+        "artifactDirectoryName": "serverless/sls-test/dev/1699106192931-2023-11-04T13:56:32.931Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -539,7 +553,7 @@
     "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-test/dev/1698115760741-2023-10-24T02:49:20.741Z",
+    "artifactDirectoryName": "serverless/sls-test/dev/1699106192931-2023-11-04T13:56:32.931Z",
     "artifact": "sls-test.zip"
   }
 }

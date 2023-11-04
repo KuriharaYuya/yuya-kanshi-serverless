@@ -1,6 +1,7 @@
 package repoutils
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
@@ -14,6 +15,12 @@ func S3FileUrl(logDate string, imageType string) string {
 }
 
 func GetImageExternalURl(logDate string, imageType string) string {
+	if logDate == "" {
+		// エラーを出して終了
+		err := errors.New("logDate is empty")
+		fmt.Println(err)
+		return ""
+	}
 	path := S3FileName(logDate, imageType)
 	url := "https://%s.s3.amazonaws.com/images%s"
 	url = fmt.Sprintf(url, os.Getenv("BUCKET_NAME"), path)

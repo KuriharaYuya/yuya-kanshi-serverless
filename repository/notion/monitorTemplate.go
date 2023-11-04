@@ -128,25 +128,36 @@ func HealthTemplate(log *LifeLog) notionapi.AppendBlockChildrenRequest {
 	musclePageTitle := head3Template("本日のトレーニング記録")
 	musclePage := pageTemplate(log.TrainingPageId)
 
-	// - ジムに行った証明
-	muscleImageTitle := head3Template("ジムに行った証明")
-	muscleImage := imageTemplate(log, NotionMyFitnessPal)
+	if log.TrainingPageId != "" {
+		// - ジムに行った証明
+		muscleImageTitle := head3Template("ジムに行った証明")
+		muscleImage := imageTemplate(log, NotionMyFitnessPal)
 
-	newBlocks := notionapi.AppendBlockChildrenRequest{
-		Children: []notionapi.Block{
-
-			healthTitle,
-			healthCalTitle,
-			healthCal,
-			muscleTitle,
-			musclePageTitle,
-			musclePage,
-			muscleImageTitle,
-			muscleImage,
-		},
+		newBlocks := notionapi.AppendBlockChildrenRequest{
+			Children: []notionapi.Block{
+				healthTitle,
+				healthCalTitle,
+				healthCal,
+				muscleTitle,
+				musclePageTitle,
+				musclePage,
+				muscleImageTitle,
+				muscleImage,
+			},
+		}
+		newToggleBlock := toggleTemplate("食事・筋トレ", &newBlocks)
+		return newToggleBlock
+	} else {
+		newBlocks := notionapi.AppendBlockChildrenRequest{
+			Children: []notionapi.Block{
+				healthTitle,
+				healthCalTitle,
+				healthCal,
+			}}
+		newToggleBlock := toggleTemplate("食事", &newBlocks)
+		return newToggleBlock
 	}
-	newToggleBlock := toggleTemplate("食事・筋トレ", &newBlocks)
-	return newToggleBlock
+
 }
 func toggleBlockTemplate(text string, children *notionapi.AppendBlockChildrenRequest) *notionapi.ToggleBlock {
 	newToggleBlock := &notionapi.ToggleBlock{

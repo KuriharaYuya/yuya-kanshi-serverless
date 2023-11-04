@@ -26,7 +26,7 @@ const (
 	MyFitnessPal    = "myFitnessPal"
 	ScreenTime      = "screenTime"
 	TodayHostsImage = "todayHostsImage"
-	CalenderPic     = "calenderPic"
+	CalenderPic     = "calenderPicture"
 )
 
 func DefineImageUrlAndPath(logDate string, imageType string) (s3URL string, localPath string) {

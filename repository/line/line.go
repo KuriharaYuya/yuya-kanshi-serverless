@@ -35,3 +35,29 @@ func ReplyToUser(cnt string) {
 	bot.BroadcastMessage(linebot.NewTextMessage(cnt)).Do()
 	return
 }
+
+func Announce(cnt string) {
+	if utils.ENVIRONMENT == "development" {
+		// ローカル開発環境用の処理
+		err := godotenv.Load()
+		if err != nil {
+			fmt.Printf("読み込み出来ませんでした_line.go: %v", err)
+		}
+	} else {
+		// 本番環境用の処理
+		// 例: AWS Secrets Managerから秘密情報を取得する
+	}
+
+	secret := os.Getenv("LINE_NOTIFY_CHANNEL_SECRET")
+	channelToken := os.Getenv("LINE_NOTIFY_CHANNEL_ACCESS_TOKEN")
+
+	bot, err := linebot.New(secret, channelToken)
+	if err != nil {
+		fmt.Println(err)
+		return
+
+	}
+	log.Println("Announce")
+	bot.BroadcastMessage(linebot.NewTextMessage(cnt)).Do()
+	return
+}

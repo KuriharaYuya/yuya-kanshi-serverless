@@ -52,7 +52,6 @@ type LifeLog struct {
 	MorningActivityLastEdited    string
 	MorningActPlace              string
 	MonthlyScreenTime            int
-	ScreenTimeImage              string
 	TrainingPageId               string
 	AllowPublish                 bool
 	CalenderPicture              string
