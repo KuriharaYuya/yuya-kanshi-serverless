@@ -46,6 +46,10 @@ func PostDailyLog(date string) {
 
 		// twitter
 		tweetID := tweet.CallVercelTwitterAPI(&l)
+		if tweetID == "" {
+			linepkg.ReplyToUser("Twitterへの投稿に失敗しました")
+			return
+		}
 		linepkg.Announce("Twitterへの投稿が完了しました" + "\n" + "https://twitter.com/kurihara_poni3/status/" + tweetID)
 		linepkg.ReplyToUser("Twitterへの投稿が完了しました" + "\n" + tweetID)
 

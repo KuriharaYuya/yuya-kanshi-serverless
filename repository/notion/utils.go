@@ -133,6 +133,12 @@ func serializeToLogProp(result *notionapi.DatabaseQueryResponse) (LifeLog, error
 		panic("failed to cast CalenderPicture property")
 	}
 
+	// copy
+	memoProp, ok := resultProps[NotionMemo].(*notionapi.RichTextProperty)
+	if !ok || memoProp == nil {
+		panic("failed to cast Memo property")
+	}
+
 	log := LifeLog{
 		UUID:                         uuidProp.Formula.String,
 		FilledAtr:                    filledAtrProp.Formula.Boolean,
@@ -156,6 +162,7 @@ func serializeToLogProp(result *notionapi.DatabaseQueryResponse) (LifeLog, error
 		TrainingPageId:               digRollupFormulaText(trainingPageRelationProp),
 		AllowPublish:                 allowPublishProp.Checkbox,
 		CalenderPicture:              calenderPictureProp.Files[0].File.URL,
+		Memo:                         memoProp.RichText[0].PlainText,
 	}
 	return log, nil
 }

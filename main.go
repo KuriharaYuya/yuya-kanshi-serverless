@@ -7,7 +7,8 @@ import (
 	"sync"
 
 	"github.com/KuriharaYuya/yuya-kanshi-serverless/gateway"
-	linepkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/line"
+	notionpkg "github.com/KuriharaYuya/yuya-kanshi-serverless/repository/notion"
+	"github.com/KuriharaYuya/yuya-kanshi-serverless/repository/tweet"
 	utils "github.com/KuriharaYuya/yuya-kanshi-serverless/util"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
@@ -54,10 +55,9 @@ func main() {
 		fmt.Println("debug mode")
 		var wg sync.WaitGroup
 		wg.Add(1)
-		// respをポインタ変数として定義
-
 		go func() {
-			linepkg.Announce("test")
+			l, _ := notionpkg.ValidateLog("2023-11-03")
+			tweet.CallVercelTwitterAPI(&l)
 			defer wg.Done()
 			// リクエストをを全てunmarshalして表示する
 

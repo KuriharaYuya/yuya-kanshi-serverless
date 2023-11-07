@@ -30,6 +30,7 @@ type LifeLogProperty struct {
 	TrainingPageRelation         *notionapi.RelationProperty
 	AllowPublish                 *notionapi.CheckboxProperty
 	CalenderPicture              *notionapi.FilesProperty
+	Memo                         *notionapi.RichTextProperty
 }
 
 type LifeLog struct {
@@ -55,6 +56,7 @@ type LifeLog struct {
 	TrainingPageId               string
 	AllowPublish                 bool
 	CalenderPicture              string
+	Memo                         string
 }
 
 const (
@@ -80,6 +82,7 @@ const (
 	NotionTrainingRelationPage         = "_trainingpageUUID"
 	NotionAllowPublish                 = "allowPublish"
 	NotionCalenderPicture              = "calenderPicture"
+	NotionMemo                         = "memo"
 )
 
 const YuyaKanshiPageId = "92a5712217cb4933968c5bfd19ee2c0d"

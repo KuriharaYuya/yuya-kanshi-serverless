@@ -58,6 +58,7 @@ func Announce(cnt string) {
 
 	}
 	log.Println("Announce")
-	bot.BroadcastMessage(linebot.NewTextMessage(cnt)).Do()
+	lineGroupID := os.Getenv("LINE_GROUP_ID")
+	bot.PushMessage(lineGroupID, linebot.NewTextMessage(cnt)).Do()
 	return
 }

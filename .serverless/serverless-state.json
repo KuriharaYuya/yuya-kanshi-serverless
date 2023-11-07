@@ -25,6 +25,7 @@
         "GOTWI_ACCESS_TOKEN": "3223240382-H9nb6qx4L0yrSGhudmW40KdvN6Xz21ivwD0b5X5",
         "GOTWI_ACCESS_TOKEN_SECRET": "HPZbskBhQenE2vVNqfeWAQNkUYILLW9YchWAubZcYABBQ",
         "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAAKmCnQEAAAAA8HZnNaRYXjM1z5W0HqMn%2FLyzpqg%3DyYBFMBosBfquJxUjnE1ufYzAA8AKciwgHMaFj3qpYO4cO60WdZ",
+        "LINE_GROUP_ID": "C1a8cfb1d9254763aad86cda4206f12ed",
         "DEBUG_MODE": "false"
       },
       "compiledCloudFormationTemplate": {
@@ -191,7 +192,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-test/dev/1699106192931-2023-11-04T13:56:32.931Z/sls-test.zip"
+                "S3Key": "serverless/sls-test/dev/1699324982737-2023-11-07T02:43:02.737Z/sls-test.zip"
               },
               "Handler": "bin/main",
               "Runtime": "go1.x",
@@ -214,6 +215,7 @@
                   "GOTWI_ACCESS_TOKEN": "3223240382-H9nb6qx4L0yrSGhudmW40KdvN6Xz21ivwD0b5X5",
                   "GOTWI_ACCESS_TOKEN_SECRET": "HPZbskBhQenE2vVNqfeWAQNkUYILLW9YchWAubZcYABBQ",
                   "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAAKmCnQEAAAAA8HZnNaRYXjM1z5W0HqMn%2FLyzpqg%3DyYBFMBosBfquJxUjnE1ufYzAA8AKciwgHMaFj3qpYO4cO60WdZ",
+                  "LINE_GROUP_ID": "C1a8cfb1d9254763aad86cda4206f12ed",
                   "DEBUG_MODE": "false"
                 }
               },
@@ -228,14 +230,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionTglhT9pGLEzcoiL6Ko9WWfq8J9qZ8Kaf7uvtV1Albxg": {
+          "HelloLambdaVersionJ5D9TclsOygvVALm3aD70t58zNB46jejI8AS8Kbi3w": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "iOmRJ2UatV19Ch1btZMJeoXnLvNhqIJSCOkPobTjju0="
+              "CodeSha256": "e0JFHGJupks6UKaCSBzsEPazdYHVYWw5JnlDlrFYP6E="
             }
           },
           "HttpApi": {
@@ -364,7 +366,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionTglhT9pGLEzcoiL6Ko9WWfq8J9qZ8Kaf7uvtV1Albxg"
+              "Ref": "HelloLambdaVersionJ5D9TclsOygvVALm3aD70t58zNB46jejI8AS8Kbi3w"
             },
             "Export": {
               "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
@@ -521,7 +523,7 @@
         "memory": 1024,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionTglhT9pGLEzcoiL6Ko9WWfq8J9qZ8Kaf7uvtV1Albxg"
+        "versionLogicalId": "HelloLambdaVersionJ5D9TclsOygvVALm3aD70t58zNB46jejI8AS8Kbi3w"
       }
     },
     "configValidationMode": "warn",
@@ -542,7 +544,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/sls-test/dev/code-artifacts",
         "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip",
-        "artifactDirectoryName": "serverless/sls-test/dev/1699106192931-2023-11-04T13:56:32.931Z"
+        "artifactDirectoryName": "serverless/sls-test/dev/1699324982737-2023-11-07T02:43:02.737Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -553,7 +555,7 @@
     "artifact": "/Users/nikoand01/Documents/yuya-kanshi-serverless/.serverless/sls-test.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/sls-test/dev/1699106192931-2023-11-04T13:56:32.931Z",
+    "artifactDirectoryName": "serverless/sls-test/dev/1699324982737-2023-11-07T02:43:02.737Z",
     "artifact": "sls-test.zip"
   }
 }
