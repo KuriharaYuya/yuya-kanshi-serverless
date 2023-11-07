@@ -38,7 +38,17 @@ vercel の tweet 専用サーバーについての説明は割愛します。
 | インフラプロビジョニング | serverless framework         |
 | API                      | notionAPI,LINE messaging api |
 
+
+
+<img width="1438" alt="Screenshot 2023-11-08 at 8 40 53" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/93495199-ccf7-418f-8246-d370e52fb454">
+
+
+
 ## システムの機能
+<img width="733" alt="Screenshot 2023-11-08 at 7 13 55" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/6c0f467e-7d56-4a46-b251-08c63eda24a5">
+<img width="730" alt="Screenshot 2023-11-08 at 7 14 07" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/8c76a5e8-021d-4594-adbc-e546ed534349">
+<img width="730" alt="Screenshot 2023-11-08 at 7 14 16" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/17e6eacb-b883-489f-b998-e4795ed46999">
+<img width="730" alt="Screenshot 2023-11-08 at 7 14 26" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/881e180a-ac60-444f-a65c-d163367ed8ce">
 
 ## 前身システム課題と解決策
 
