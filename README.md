@@ -40,15 +40,17 @@ vercel の tweet 専用サーバーについての説明は割愛します。
 
 
 
-<img width="1438" alt="Screenshot 2023-11-08 at 8 40 53" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/93495199-ccf7-418f-8246-d370e52fb454">
+<img width="1438" alt="Screenshot 2023-11-08 at 9 53 41" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/8cabc42d-6e39-4c3a-a349-bde61579518c">
+
 
 
 
 ## システムの機能
-<img width="733" alt="Screenshot 2023-11-08 at 7 13 55" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/6c0f467e-7d56-4a46-b251-08c63eda24a5">
-<img width="730" alt="Screenshot 2023-11-08 at 7 14 07" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/8c76a5e8-021d-4594-adbc-e546ed534349">
-<img width="730" alt="Screenshot 2023-11-08 at 7 14 16" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/17e6eacb-b883-489f-b998-e4795ed46999">
-<img width="730" alt="Screenshot 2023-11-08 at 7 14 26" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/881e180a-ac60-444f-a65c-d163367ed8ce">
+<img width="733" alt="Screenshot 2023-11-08 at 7 13 55" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/987b8e04-703b-48e7-97cc-ffd64017f06b">
+<img width="730" alt="Screenshot 2023-11-08 at 7 14 07" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/0ea8d1b0-ffd0-4fc5-98fc-cb0938e6292a">
+<img width="730" alt="Screenshot 2023-11-08 at 7 14 16" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/01bfc988-eb75-4b71-a54d-49105b976c0e">
+<img width="730" alt="Screenshot 2023-11-08 at 7 14 26" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/9e906dd8-9541-4967-94b7-abc26c5e104b">
+
 
 ## 前身システム課題と解決策
 
