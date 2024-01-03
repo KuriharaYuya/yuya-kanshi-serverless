@@ -58,7 +58,11 @@ func Announce(cnt string) {
 
 	}
 	log.Println("Announce")
-	lineGroupID := os.Getenv("LINE_GROUP_ID")
-	bot.PushMessage(lineGroupID, linebot.NewTextMessage(cnt)).Do()
+	lineGroupID_RION := os.Getenv("LINE_GROUP_ID_RION")
+	lineGroupID_NIKI := os.Getenv("LINE_GROUP_ID_NIKI")
+	lineGroupID_AMANE := os.Getenv("LINE_GROUP_ID_AMANE")
+	bot.PushMessage(lineGroupID_RION, linebot.NewTextMessage(cnt)).Do()
+	bot.PushMessage(lineGroupID_NIKI, linebot.NewTextMessage(cnt)).Do()
+	bot.PushMessage(lineGroupID_AMANE, linebot.NewTextMessage(cnt)).Do()
 	return
 }

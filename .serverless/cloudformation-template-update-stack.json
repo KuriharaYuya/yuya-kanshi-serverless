@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sls-test/dev/1699324982737-2023-11-07T02:43:02.737Z/sls-test.zip"
+          "S3Key": "serverless/sls-test/dev/1704299490436-2024-01-03T16:31:30.436Z/sls-test.zip"
         },
         "Handler": "bin/main",
         "Runtime": "go1.x",
@@ -185,7 +185,9 @@
             "GOTWI_ACCESS_TOKEN": "3223240382-H9nb6qx4L0yrSGhudmW40KdvN6Xz21ivwD0b5X5",
             "GOTWI_ACCESS_TOKEN_SECRET": "HPZbskBhQenE2vVNqfeWAQNkUYILLW9YchWAubZcYABBQ",
             "TWITTER_BEARER_TOKEN": "AAAAAAAAAAAAAAAAAAAAAKmCnQEAAAAA8HZnNaRYXjM1z5W0HqMn%2FLyzpqg%3DyYBFMBosBfquJxUjnE1ufYzAA8AKciwgHMaFj3qpYO4cO60WdZ",
-            "LINE_GROUP_ID": "C1a8cfb1d9254763aad86cda4206f12ed",
+            "LINE_GROUP_ID_RION": "C1a8cfb1d9254763aad86cda4206f12ed",
+            "LINE_GROUP_ID_NIKI": "Cdc2fba5e778af3c204678489af587cfa",
+            "LINE_GROUP_ID_AMANE": "C63c4a3bce953fd325940445283c58aca",
             "DEBUG_MODE": "false"
           }
         },
@@ -200,14 +202,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionJ5D9TclsOygvVALm3aD70t58zNB46jejI8AS8Kbi3w": {
+    "HelloLambdaVersionVLlDqP8g1pNCxHoekj0FtB3xx9ZmhNAYBfeagtJv0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "e0JFHGJupks6UKaCSBzsEPazdYHVYWw5JnlDlrFYP6E="
+        "CodeSha256": "R2fGFcB3PjpQUc7KwDLXhWIJ+HfqnL6WxN0fRA5UTpQ="
       }
     },
     "HttpApi": {
@@ -339,7 +341,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionJ5D9TclsOygvVALm3aD70t58zNB46jejI8AS8Kbi3w"
+        "Ref": "HelloLambdaVersionVLlDqP8g1pNCxHoekj0FtB3xx9ZmhNAYBfeagtJv0"
       },
       "Export": {
         "Name": "sls-sls-test-dev-HelloLambdaFunctionQualifiedArn"
