@@ -49,7 +49,8 @@ vercel の tweet 専用サーバーについての説明は割愛します。
 <img width="733" alt="Screenshot 2023-11-08 at 7 13 55" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/987b8e04-703b-48e7-97cc-ffd64017f06b">
 <img width="730" alt="Screenshot 2023-11-08 at 7 14 07" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/0ea8d1b0-ffd0-4fc5-98fc-cb0938e6292a">
 <img width="730" alt="Screenshot 2023-11-08 at 7 14 16" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/01bfc988-eb75-4b71-a54d-49105b976c0e">
-<img width="730" alt="Screenshot 2023-11-08 at 7 14 26" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/9e906dd8-9541-4967-94b7-abc26c5e104b">
+
+<img width="506" alt="Screenshot 2023-11-14 at 23 55 46" src="https://github.com/KuriharaYuya/yuya-kanshi-serverless/assets/109059044/7c652ac1-0448-42a7-8308-bae2de235fa2">
 
 
 ## 前身システム課題と解決策
